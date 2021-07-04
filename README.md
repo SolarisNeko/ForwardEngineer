@@ -1,5 +1,7 @@
 # Forward Engineer 正向工程
 
+License = **Apache 2.0**
+
 **current-version = v0.0.1**
 
 当前版本 = v0.0.1
