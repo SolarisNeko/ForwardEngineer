@@ -1,6 +1,6 @@
-package com.neko.rule;
+package com.neko.forward.rule;
 
-import com.neko.annotation.Column;
+import com.neko.forward.annotation.Column;
 
 /**
  * @title:
@@ -11,9 +11,9 @@ import com.neko.annotation.Column;
 public class ColumnRule {
     /**
      * 基于 Column 规则
-     *  构建 entity.field -> Column DDL 的 SQL
-     * */
-    public static String buildColumnSqlonRule(Column column, String columnName) {
+     * 构建 entity.field -> Column DDL 的 SQL
+     */
+    public static String buildColumnSqlonRule(Column column, String columnName, String defaultColumnType) {
         String columnSQL;
 
         String type = column.type();
@@ -21,7 +21,13 @@ public class ColumnRule {
         boolean isAutoIncrement = column.autoIncrement();
         boolean isNotNull = column.notNull();
 
-        columnSQL = "`" + columnName + "` " + type + " ";
+        if (type.isEmpty()) {
+            // @Column.type 无输入
+            columnSQL = "`" + columnName + "` " + defaultColumnType + " ";
+        } else {
+            // @Column.type 有输入
+            columnSQL = "`" + columnName + "` " + type + " ";
+        }
         if (isPk) {
             columnSQL += "Primary Key ";
         } else {

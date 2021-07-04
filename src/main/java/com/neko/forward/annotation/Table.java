@@ -1,4 +1,4 @@
-package com.neko.annotation;
+package com.neko.forward.annotation;
 
 import java.lang.annotation.*;
 

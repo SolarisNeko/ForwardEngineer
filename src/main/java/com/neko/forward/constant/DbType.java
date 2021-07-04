@@ -1,6 +1,4 @@
-package com.neko.constant;
-
-import javafx.scene.effect.GaussianBlur;
+package com.neko.forward.constant;
 
 /**
  * @title:

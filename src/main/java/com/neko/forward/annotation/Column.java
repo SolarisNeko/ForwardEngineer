@@ -1,4 +1,4 @@
-package com.neko.annotation;
+package com.neko.forward.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -21,10 +21,10 @@ public @interface Column {
     String value() default "";
 
     /**
-     * 字段类型 | 默认 String
+     * 字段类型 | default 根据 class.field 的 type 来解析
      * todo - 还没有根据反射, 实现 String -> varchar 的映射
      * */
-    String type() default "varchar(255)";
+    String type() default "";
 
     /**
      * 主键 ? | false

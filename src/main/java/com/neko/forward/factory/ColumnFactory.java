@@ -1,9 +1,10 @@
 package com.neko.forward.factory;
 
-import com.neko.annotation.Column;
+import com.neko.forward.annotation.Column;
 import com.neko.forward.exception.NekoException;
-import com.neko.rule.ColumnRule;
-import com.neko.util.CharacterUtil;
+import com.neko.forward.rule.ColumnRule;
+import com.neko.forward.rule.TypeRule;
+import com.neko.forward.util.CharacterUtil;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -31,7 +32,13 @@ public class ColumnFactory {
 
             // 3、处理 field
             for (int i = 0; i < fields.length; i++) {
+                // get field
                 Field field = fields[i];
+
+                // get field.type
+                Class<?> type = field.getType();
+                String defaultColumnTypeName = TypeRule.chooseDefaultColumnTypeByType(type.getName());
+
 
                 /** 构建单个 column SQL 需要的元素 */
                 String fieldName = field.getName();
@@ -45,7 +52,7 @@ public class ColumnFactory {
                     throw new NekoException("你忘记对 entity.field 定义 @Column");
                 } else {
                     // 只获取第1个 @Column
-                    columnSQL = ColumnRule.buildColumnSqlonRule(column, columnName);
+                    columnSQL = ColumnRule.buildColumnSqlonRule(column, columnName, defaultColumnTypeName);
 
                     /** 最后1个Column, 不加 "," */
                     if (i != (fields.length - 1)) {
