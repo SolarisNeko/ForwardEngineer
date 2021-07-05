@@ -1,10 +1,6 @@
 package com.neko;
 
 import com.neko.forward.engine.ForwardEngine;
-import com.neko.entity.SystemUser;
-import com.neko.forward.scan.PackageScanner;
-
-import java.util.List;
 
 /**
  * 正向工程
@@ -17,8 +13,13 @@ public class App {
 
     private static final String packageName = "com.neko.entity";
 
+    private static final String className = "com.neko.entity.SystemUser";
+
     public static void main(String[] args) {
-       ForwardEngine.run(packageName);
+
+//       ForwardEngine.runClass(className);
+
+       ForwardEngine.runPackage(packageName);
     }
 
 }

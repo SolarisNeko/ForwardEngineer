@@ -36,12 +36,15 @@ public class PackageScanner {
         // 存储扫描到的 .class 文件对应的 Class<?>
         List<Class<?>> classList = new ArrayList<Class<?>>();
 
-        // 获取包的名字 并进行替换
+        // 处理 packageName, 将 java classPath "." -> FileSystem Path "/"
         String packageDirName = packageName.replace('.', '/');
+
         // 定义一个枚举的集合 并进行循环来处理这个目录下的 file
         Enumeration<URL> dirs;
         try {
+            // get All file/directory
             dirs = Thread.currentThread().getContextClassLoader().getResources(packageDirName);
+
             // 循环迭代下去
             while (dirs.hasMoreElements()) {
                 URL url = dirs.nextElement();

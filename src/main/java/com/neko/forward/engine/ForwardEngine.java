@@ -16,11 +16,35 @@ import java.util.Map;
  */
 public class ForwardEngine {
 
+    public static void runClass(String className) {
+
+        // 1  - 扫描 package 下的所有 Class
+        Class<?> clazz = null;
+        try {
+            clazz = Class.forName(className);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        // 2、正向工程
+        System.out.println("---------- 正向工程 Start ----------------------");
+
+            // 投入 class
+            String createTableSQL = ForwardEngine.getCreateTableSQLByClassName(clazz);
+
+            // Println
+            System.out.println();
+            System.out.println(createTableSQL);
+            System.out.println();
+
+        System.out.println("---------- 正向工程 End ----------------------");
+    }
+
     /**
      * 运行 [正向工程] 入口
      * 扫描 packageName 下的所有 Class, 并构建 DDL SQL
      */
-    public static void run(String packageName) {
+    public static void runPackage(String packageName) {
 
         // 1  - 扫描 package 下的所有 Class
         List<Class<?>> classes = PackageScanner.getClasses(packageName);
