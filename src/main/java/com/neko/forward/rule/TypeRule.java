@@ -13,22 +13,27 @@ public class TypeRule {
     public static String chooseDefaultColumnTypeByType(String classType) {
         switch (classType) {
             case "int":
-            case "Integer": {
+            case "java.lang.Integer": {
                 return ColumnTypeEnum.INT.typeName;
             }
             case "long":
-            case "Long": {
+            case "java.lang.Long": {
                 return ColumnTypeEnum.BIG_INT.typeName;
             }
-            case "String": {
+            case "java.lang.String": {
                 return ColumnTypeEnum.VARCHAR.typeName;
             }
-            case "BigDecimal": {
+            case "java.math.BigDecimal": {
                 return ColumnTypeEnum.DECIMAL.typeName;
             }
             case "boolean":
-            case "Boolean": {
+            case "java.lang.Boolean": {
                 return ColumnTypeEnum.BOOLEAN.typeName;
+            }
+            case "date":
+            case "java.util.Date": {
+                // datetime = "yyyy-MM-dd hh:mm:ss"
+                return ColumnTypeEnum.DATE.typeName;
             }
             default: {
                 return ColumnTypeEnum.VARCHAR.typeName;

@@ -25,7 +25,14 @@ public class SqlFactory {
             sb.append(columnSQL);
         }
         // table foot
-        sb.append(" ) engine = " + engine + ", charset = " + charset + ";");
+        sb.append(" ) ");
+        if (!engine.isEmpty()) {
+            sb.append("engine = " + engine + ", ");
+        }
+        if (!charset.isEmpty()) {
+            sb.append("charset = " + charset);
+        }
+        sb.append(";");
 
         return sb.toString();
     }

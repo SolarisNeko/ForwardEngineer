@@ -14,9 +14,11 @@ import java.util.List;
  * 2、
  */
 public class App {
+
     private static final String packageName = "com.neko.entity";
 
     public static void main(String[] args) {
        ForwardEngine.run(packageName);
     }
+
 }

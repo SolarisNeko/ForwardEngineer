@@ -1,6 +1,8 @@
 package com.neko.forward.factory;
 
 import com.neko.forward.annotation.Table;
+import com.neko.forward.constant.CharsetEnum;
+import com.neko.forward.constant.EngineEnum;
 import com.neko.forward.util.CharacterUtil;
 
 import java.util.HashMap;
@@ -18,7 +20,7 @@ public class TableFactory {
      * give className, return tableName in [Big Camel] format.
      * 给类名, 返回大驼峰表名。
      */
-    public static Map<String, String> getTableNameByClass(String className) {
+    public static Map<String, String> getTableNameByClass(Class<?> targetClass) {
         // 最终构建的【大驼峰Table名字】
         String tableName = "";
         Map<String, String> resultMap = new HashMap<>(3);
@@ -26,12 +28,21 @@ public class TableFactory {
         String engine;
         String charset;
 
-        try {
-            // Reflect
-            Class<?> targetClass = Class.forName(className);
+        // Reflect
 
-            // get Annotation
-            Table[] tableAnnotation = targetClass.getAnnotationsByType(Table.class);
+        // get Annotation
+        Table[] tableAnnotation = targetClass.getAnnotationsByType(Table.class);
+        /** 没有 @Table = 使用默认值 */
+        if (tableAnnotation.length == 0) {
+            // todo 硬编码 - 写死了 enum 选择。
+            tableValue = targetClass.getSimpleName().toUpperCase();
+            engine = EngineEnum.INNODB.getEngine();
+            charset = CharsetEnum.UTF8.getCharset();
+
+            resultMap.put("table", tableValue);
+            resultMap.put("engine", engine);
+            resultMap.put("charset", charset);
+        } else {
             // parse Annotation
             for (int i = 0; i < tableAnnotation.length; i++) {
                 Table table = tableAnnotation[i];
@@ -48,7 +59,7 @@ public class TableFactory {
                      * 解析 className, 转化成 SQL 的 Table规范 例如: ABC_USER
                      * ps: 首字母不解析
                      * */
-                     tableName = CharacterUtil.toBigCamelUpperName(tableValue);
+                    tableName = CharacterUtil.toBigCamelUpperName(tableValue);
                 }
 
                 resultMap.put("table", tableName);
@@ -56,8 +67,6 @@ public class TableFactory {
                 resultMap.put("charset", charset);
 
             }
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
 
         // return [大驼峰名字 big camel]

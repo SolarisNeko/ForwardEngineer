@@ -1,5 +1,8 @@
 package com.neko.forward.annotation;
 
+import com.neko.forward.constant.CharsetEnum;
+import com.neko.forward.constant.EngineEnum;
+
 import java.lang.annotation.*;
 
 /**
@@ -19,9 +22,9 @@ public @interface Table {
 
     /**
      * DB引擎 | MySQL 默认 InnoDB
-     *  todo 还没考虑其他数据库
+     *  todo 未考虑 Oracle, Postgre等DB の engine
      * */
-    String engine() default "InnoDB";
+    String engine() default "";
 
     /**
      * 存储的编码集 | default = utf8

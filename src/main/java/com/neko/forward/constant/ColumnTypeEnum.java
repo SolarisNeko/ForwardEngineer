@@ -12,7 +12,7 @@ public enum ColumnTypeEnum {
     VARCHAR("varchar(255)"),
     DECIMAL("decimal"),
     BOOLEAN("boolean"),
-
+    DATE("datetime")
     ;
 
     public String typeName;

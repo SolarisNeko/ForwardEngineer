@@ -4,13 +4,15 @@ import com.neko.forward.annotation.Column;
 import com.neko.forward.annotation.Table;
 import lombok.Data;
 
+import java.util.Date;
+
 /**
  * @title: User 表
  * @description: 测试 @Table + @Column
  * @author: SolarisNeko
  * @date: 2021/7/4
  */
-@Table
+@Table(engine = "MyISAM", charset = "utf8mb4")
 @Data
 public class SystemUser {
     /**
@@ -36,5 +38,7 @@ public class SystemUser {
 
     @Column(type = "int")
     private int age;
+
+    private Date createDate;
 
 }

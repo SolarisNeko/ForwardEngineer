@@ -22,10 +22,10 @@ public class ColumnRule {
         boolean isNotNull = column.notNull();
 
         if (type.isEmpty()) {
-            // @Column.type 无输入
+            // @Column.type 无输入 | 尾部空格, 必须保留
             columnSQL = "`" + columnName + "` " + defaultColumnType + " ";
         } else {
-            // @Column.type 有输入
+            // @Column.type 有输入, 组装 type | 尾部空格, 必须保留
             columnSQL = "`" + columnName + "` " + type + " ";
         }
         if (isPk) {
@@ -39,6 +39,11 @@ public class ColumnRule {
             columnSQL += "auto_increment ";
         }
 
+        return columnSQL;
+    }
+
+    public static String buildDefaultColumnSql(String columnName, String defaultColumnTypeName) {
+        String columnSQL  = "`" + columnName + "`" + " " + defaultColumnTypeName + "";
         return columnSQL;
     }
 }
