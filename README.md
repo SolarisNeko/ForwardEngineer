@@ -10,6 +10,20 @@ License = **Apache 2.0**
 >
 > @startDate: Saturday，03/07/2021
 
+## 快速上手
+
+```java
+// 针对单个 class
+ForwardEngine.runClass("com.neko.entity.SystemUser");
+
+// 或者 
+
+// 扫描 package
+ForwardEngine.runPackage("com.neko.entity");
+```
+
+
+
 ## 示意图
 
 ![ForwardEngineer 正向工程](README.assets/ForwardEngineer 正向工程.png)

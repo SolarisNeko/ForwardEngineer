@@ -19,13 +19,6 @@ import java.util.jar.JarFile;
  */
 public class PackageScanner {
 
-
-    public static void main(String[] args) {
-        List<Class<?>> classList = getClasses("com.neko.entity");
-
-//        classList.forEach(System.out::println);
-    }
-
     /**
      * 从指定的 package 中,获取所有 Class
      *

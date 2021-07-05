@@ -1,7 +1,11 @@
 # project
-.idea/
-target/
+# idea 配置
 *.iml
+.idea/
+# .class
+target/
+# jar包
+out/
 
 
 # Compiled class file
