@@ -12,6 +12,8 @@ License = **Apache 2.0**
 
 ## 快速上手
 
+下载 zip 包，将 **.zip** 改成 **.jar**，然后 **add lib** 即可使用。  
+
 ```java
 // 针对单个 class
 ForwardEngine.runClass("com.neko.entity.SystemUser");
