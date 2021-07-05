@@ -10,15 +10,23 @@ License = **Apache 2.0**
 >
 > @startDate: Saturday，03/07/2021
 
+## 示意图
+
+![ForwardEngineer 正向工程](README.assets/ForwardEngineer 正向工程.png)
+
+# 进度
+
 ## 1、目前进度
 
-1. 使用 ==@Table + @Column==，即可生成**粒度很细的建表SQL**
-2. 支持**包扫描**，给定 packge，即可实现**批量生成**。
+1. 使用 **@Table、@Column** 生成 [细粒度的建表SQL] 。
+2. 单个 **class** + 递归扫描 **package**，生成 sql 。
+3. 已加入对 **原生 Pojo** 的 `无侵入支持`
 
 ## 2、未来计划
 
-1. 加入对 ==没有 @interface== 的 **entity** 的**正向生成**支持。
-2. 加入 ==@Constraint，@Index== 等特殊 DDL 支持，建立**索引、约束** 。
+2. 导出 sql 脚本到 **xxx.sql** 文件中。
+2. 加入 **@Constraint** 支持 。
+3. 加入对 **@Index** 支持。
 
 
 

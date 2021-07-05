@@ -16,18 +16,19 @@ import java.lang.annotation.*;
 //@Repeatable()
 public @interface Table {
     /**
-     * 表名 | 如果不填, 解析：大写解析 -> 大驼峰
+     * tableName 表名
+     *  如果不填, 解析规则 = 大写解析 -> 大驼峰
      * */
     String value() default "";
 
     /**
-     * DB引擎 | MySQL 默认 InnoDB
+     * DB引擎
      *  todo 未考虑 Oracle, Postgre等DB の engine
      * */
-    String engine() default "";
+    String engine() default "InnoDB";
 
     /**
-     * 存储的编码集 | default = utf8
+     * 存储的编码集
      * */
     String charset() default "utf8";
 

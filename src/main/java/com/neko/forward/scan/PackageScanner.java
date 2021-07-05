@@ -40,23 +40,26 @@ public class PackageScanner {
         String packageDirName = packageName.replace('.', '/');
 
         // 定义一个枚举的集合 并进行循环来处理这个目录下的 file
-        Enumeration<URL> dirs;
+        Enumeration<URL> urlEnumeration;
         try {
-            // get All file/directory
-            dirs = Thread.currentThread().getContextClassLoader().getResources(packageDirName);
+            // Get thread -> Launcher$AppClassLoader@xxx -> Enumeration<URL> by packageDirName
+            urlEnumeration = Thread.currentThread().getContextClassLoader().getResources(packageDirName);
 
             // 循环迭代下去
-            while (dirs.hasMoreElements()) {
-                URL url = dirs.nextElement();
-                // 得到协议的名称
+            while (urlEnumeration.hasMoreElements()) {
+                // URL = protocol:/package/全路径
+                URL url = urlEnumeration.nextElement();
+                // get Protocol
                 String protocol = url.getProtocol();
-                // 因为 .java 的 protocol = "file"
+
+                // Core: recursion find class by Protocol !
                 if ("file".equals(protocol)) {
-                    // 获取包的物理路径
-                    String filePath = URLDecoder.decode(url.getFile(), "UTF-8");
-                    // 以文件的方式扫描整个包下的文件 并添加到集合中
-                    classList.addAll(findClassByDirectory(packageName, filePath));
+                    // decode: 去掉 protocol
+                    String directoryPath = URLDecoder.decode(url.getFile(), "UTF-8");
+                    // if file, search class in packageName
+                    classList.addAll(findClassByDirectory(packageName, directoryPath));
                 } else if ("jar".equals(protocol)) {
+                    // "jar" = 解析 Jar 中的 class
                     classList.addAll(findClassInJar(packageName, url));
                 }
             }
@@ -71,29 +74,31 @@ public class PackageScanner {
      * 以文件的形式来获取包下的所有Class
      *
      * @param packageName
-     * @param packagePath
+     * @param directoryPath
      */
-    public static List<Class<?>> findClassByDirectory(String packageName, String packagePath) {
-        // 获取此包的目录 建立一个File
-        File dir = new File(packagePath);
-        if (!dir.exists() || !dir.isDirectory()) {
+    public static List<Class<?>> findClassByDirectory(String packageName, String directoryPath) {
+        List<Class<?>> classes = new ArrayList<Class<?>>();
+
+        // 获取 directoryPath 对应的 File
+        File directory = new File(directoryPath);
+        // directory 是否存在 / 给出的 packageName 转化后的路径, 是否为 Directory
+        if (!directory.exists() || !directory.isDirectory()) {
             return new ArrayList<>(0);
         }
 
-        File[] fileArray = dir.listFiles();
-        List<Class<?>> classes = new ArrayList<Class<?>>();
+        // list files
+        File[] fileArray = directory.listFiles();
         // 循环所有文件
         for (File file : fileArray) {
-            // 1、目录 -> 递归进入
+            // file = Directory 0x04
             if (file.isDirectory()) {
                 // Recursion + List.addAll(List)
                 classes.addAll(
                         findClassByDirectory(packageName + "." + file.getName(),
                                 file.getAbsolutePath())
                 );
-                // 2、file -> 判断是否为 .class (java 运行 .class 文件)
             } else if (file.getName().endsWith(".class")) {
-                // 如果是java的 .class 文件，去掉后面的 .class 只留下类名 | - 6 = ".class"
+                // 是否是 .class 文件 | 去掉后面的 ".class" = length() - 6
                 String className = file.getName().substring(0, file.getName().length() - 6);
                 try {
                     classes.add(Class.forName(packageName + '.' + className));
