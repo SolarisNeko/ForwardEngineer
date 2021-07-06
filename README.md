@@ -32,7 +32,7 @@ ForwardEngine.runPackage("com.neko.entity");
 ## 1、目前进度
 
 1. 使用 **@Table、@Column** 生成 [细粒度的建表SQL] 。
-2. 单个 **class** + 递归扫描 **package**，生成 sql 。
+2. 包扫描、单个文件，生成SQL
 3. 已加入对 **原生 Pojo** 的 `无侵入支持`
 4. 生成 .sql 文件
 
