@@ -4,10 +4,7 @@ import com.neko.forward.engine.ForwardEngine;
 
 /**
  * 正向工程
- * 1、不考虑 format 问题（排版问题, 只管生成正确SQL即可, 排版交给 IDE）
- * todo:
- * 1、 扫描 package 下所有包
- * 2、
+ *  App 为 演示
  */
 public class App {
 

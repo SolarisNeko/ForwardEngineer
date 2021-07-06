@@ -22,7 +22,6 @@ public @interface Column {
 
     /**
      * 字段类型 | default 根据 class.field 的 type 来解析
-     * todo - 还没有根据反射, 实现 String -> varchar 的映射
      * */
     String type() default "";
 

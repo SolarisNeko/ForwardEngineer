@@ -14,7 +14,7 @@ public class SqlFactory {
     /**
      * 不检查 tableName
      * */
-    public static String makeTableSqlforMySQL(String tableName, List<String> columnSqlList, String engine, String charset) {
+    public static String makeTableSqlForMySQL(String tableName, List<String> columnSqlList, String engine, String charset) {
         // 暂不考虑多线程
         StringBuilder sb = new StringBuilder();
 
@@ -33,6 +33,9 @@ public class SqlFactory {
             sb.append("charset = " + charset);
         }
         sb.append(";");
+
+        // Windows 换行 | SQL之间, 有1空行
+        sb.append("\r\n\r\n");
 
         return sb.toString();
     }

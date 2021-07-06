@@ -1,10 +1,4 @@
-# Forward Engineer 正向工程
-
-License = **Apache 2.0**
-
-**current-version = v0.0.3**
-
-当前版本 = v0.0.3
+# Forward Engineer 正向工程 0.0.4
 
 > @author: SolarisNeko 
 >
@@ -12,7 +6,9 @@ License = **Apache 2.0**
 
 ## 快速上手
 
-下载 zip 包，将 **.zip** 改成 **.jar**，然后 **add lib** 即可使用。  
+下载 jar 包
+
+https://gitee.com/SolarisNeko/forward-engineering/releases
 
 ```java
 // 针对单个 class
@@ -27,6 +23,7 @@ ForwardEngine.runPackage("com.neko.entity");
 
 
 ## 示意图
+见 /README.assets/ForwardEngineer 正向工程.png
 
 ![ForwardEngineer 正向工程](README.assets/ForwardEngineer 正向工程.png)
 
@@ -37,12 +34,13 @@ ForwardEngine.runPackage("com.neko.entity");
 1. 使用 **@Table、@Column** 生成 [细粒度的建表SQL] 。
 2. 单个 **class** + 递归扫描 **package**，生成 sql 。
 3. 已加入对 **原生 Pojo** 的 `无侵入支持`
+4. 生成 .sql 文件
 
 ## 2、未来计划
 
-2. 导出 sql 脚本到 **xxx.sql** 文件中。
-2. 加入 **@Constraint** 支持 。
-3. 加入对 **@Index** 支持。
+1. 加入 **@Constraint** 支持 。
+2. 加入对 **@Index** 支持。
+3. 加入对 @Table, @Column 的 comment 解释支持。
 
 
 
@@ -70,13 +68,13 @@ ForwardEngine.runPackage("com.neko.entity");
 
 ​	这很辛苦，比我写 SQL 慢太多了（慢1000%+) 。
 
-> 1、解决 **entity -> SQL** 问题
+> 1、Java 即 SQL
 
 ### 原因 2
 
 ​	同时，随着时代发展，我们的 Table 逐渐去除 FK（Foreign Key），当 Table 命名不规范的时候，你根本不知道一些==字段的关联关系==。
 
-> 2、从 **Java** 层面，可视化 **Table关系**，==辅助决策== 。
+> 2、Table 关系可视化
 
 
 

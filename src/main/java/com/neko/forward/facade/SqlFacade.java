@@ -1,8 +1,6 @@
 package com.neko.forward.facade;
 
-import com.neko.forward.factory.ColumnFactory;
 import com.neko.forward.factory.SqlFactory;
-import com.neko.forward.factory.TableFactory;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,7 +31,7 @@ public class SqlFacade {
         // 支持不同的数据库, 通过 SqlFactory 构建 完整的建表SQL
         switch (dbType) {
             case "mysql": {
-                String tableSQL = SqlFactory.makeTableSqlforMySQL(tableName, columnSqlList, engine, charset);
+                String tableSQL = SqlFactory.makeTableSqlForMySQL(tableName, columnSqlList, engine, charset);
                 return tableSQL;
             }
             default: {
