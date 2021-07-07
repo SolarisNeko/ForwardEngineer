@@ -1,4 +1,4 @@
-package com.neko.forward.engine;
+package com.neko.forward.engineer;
 
 import com.neko.forward.facade.SqlFacade;
 import com.neko.forward.factory.ColumnFactory;
@@ -17,7 +17,7 @@ import java.util.Map;
  * @author: SolarisNeko
  * @date: 2021/7/4
  */
-public class ForwardEngine {
+public class ForwardEngineer {
 
     public static void runClass(String className) {
 
@@ -33,7 +33,7 @@ public class ForwardEngine {
         System.out.println("---------- 正向工程 Start ----------------------");
 
             // 投入 class
-            String createTableSQL = ForwardEngine.getCreateTableSQLByClassName(clazz);
+            String createTableSQL = ForwardEngineer.getCreateTableSQLByClassName(clazz);
 
             // Println
             System.out.println();
@@ -58,7 +58,7 @@ public class ForwardEngine {
         for (Class<?> clazz : classes) {
 
             // 投入 class
-            String createTableSQL = ForwardEngine.getCreateTableSQLByClassName(clazz);
+            String createTableSQL = ForwardEngineer.getCreateTableSQLByClassName(clazz);
 
             sqlSB.append(createTableSQL);
         }
@@ -103,6 +103,24 @@ public class ForwardEngine {
 
 
         return tableSQL;
+    }
+
+    /**
+     * 文档
+     * */
+    public static void readMe() {
+        System.out.println("------------ How to use ForwardEngineer -------------------");
+        System.out.println();
+        System.out.println("入口类 = ForwardEngine ");
+        System.out.println();
+        System.out.println("单个 .java 文件 : ");
+        System.out.println(" ForwardEngine.runClass(\"com.neko.entity.SystemUser\"); ");
+        System.out.println(" ps:上面的 com.neko.entity.SystemUser 是你的 Entity(实体) 位置");
+        System.out.println();
+        System.out.println("扫描 package :");
+        System.out.println(" ForwardEngine.runPackage(\"com.neko.entity\"); ");
+        System.out.println();
+        System.out.println("-----------------------------------------------");
     }
 
 

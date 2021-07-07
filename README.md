@@ -1,4 +1,4 @@
-# Forward Engineer 正向工程 0.0.4
+# Forward Engineer 正向工程 0.0.5
 
 > @author: SolarisNeko 
 >
@@ -11,13 +11,15 @@
 https://gitee.com/SolarisNeko/forward-engineering/releases
 
 ```java
-// 针对单个 class
-ForwardEngine.runClass("com.neko.entity.SystemUser");
+// 查看帮助手册 
+ForwardEngineer.readMe();
 
-// 或者 
+// for singleton .java | 针对单个 java实体类
+ForwardEngineer.runClass("com.neko.entity.SystemUser");
 
-// 扫描 package
-ForwardEngine.runPackage("com.neko.entity");
+// scan package's entity | 扫描 package 下的 entity
+ForwardEngineer.runPackage("com.neko.entity");
+
 ```
 
 
@@ -35,6 +37,7 @@ ForwardEngine.runPackage("com.neko.entity");
 2. 包扫描、单个文件，生成SQL
 3. 已加入对 **原生 Pojo** 的 `无侵入支持`
 4. 生成 .sql 文件
+5. 加入了文档API, ForwardEngineer.readMe()
 
 ## 2、未来计划
 

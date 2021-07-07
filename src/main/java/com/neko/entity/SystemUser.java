@@ -7,6 +7,8 @@ import lombok.Data;
 import java.util.Date;
 
 /**
+ * 测试, 注释掉
+ *
  * @title: User 表
  * @description: 测试 @Table + @Column
  * @author: SolarisNeko

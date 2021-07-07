@@ -6,7 +6,10 @@
 target/
 # jar包
 out/
-
+# 测试的 entity
+/src/main/java/com/neko/entity/
+# App
+/src/main/java/com/neko/App.java
 
 # Compiled class file
 *.class
@@ -31,3 +34,4 @@ out/
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+

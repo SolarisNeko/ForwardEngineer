@@ -1,6 +1,6 @@
 package com.neko;
 
-import com.neko.forward.engine.ForwardEngine;
+import com.neko.forward.engineer.ForwardEngineer;
 
 /**
  * 正向工程
@@ -14,9 +14,11 @@ public class App {
 
     public static void main(String[] args) {
 
+        ForwardEngineer.readMe();
+
 //       ForwardEngine.runClass(className);
 
-       ForwardEngine.runPackage(packageName);
+       ForwardEngineer.runPackage(packageName);
     }
 
 }
