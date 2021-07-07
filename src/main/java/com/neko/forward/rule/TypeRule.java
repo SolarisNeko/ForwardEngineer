@@ -16,6 +16,10 @@ public class TypeRule {
             case "java.lang.Integer": {
                 return ColumnTypeEnum.INT.typeName;
             }
+            case "float":
+            case "java.lang.Float": {
+                return ColumnTypeEnum.FLOAT.typeName;
+            }
             case "long":
             case "java.lang.Long": {
                 return ColumnTypeEnum.BIG_INT.typeName;

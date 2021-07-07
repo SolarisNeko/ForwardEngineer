@@ -28,7 +28,10 @@ public class SqlFacade {
          * */
         List fieldList = null;
 
-        // 支持不同的数据库, 通过 SqlFactory 构建 完整的建表SQL
+        /**
+         * 支持不同的数据库, 通过 SqlFactory 构建 完整的建表SQL
+         *  ps: 后续, 做成扩展接口
+         * */
         switch (dbType) {
             case "mysql": {
                 String tableSQL = SqlFactory.makeTableSqlForMySQL(tableName, columnSqlList, engine, charset);

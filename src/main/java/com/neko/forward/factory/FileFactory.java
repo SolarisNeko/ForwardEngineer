@@ -28,10 +28,8 @@ public class FileFactory {
         /** dir -> file */
         FileWriter writer;
         if (directory.exists()) {
-            // 存在该文件夹
             boolean fileSuccess = true;
             if (file.exists()) {
-               // 已存在 = 清空清空内容
                 writer = new FileWriter(outputFile);
                 writer.write("");
             } else {
@@ -42,9 +40,7 @@ public class FileFactory {
             if (fileSuccess) {
 
                 try {
-                    // 第2个参数, true = 追加写入
                     writer = new FileWriter(outputFile);
-                    //清空原文件内容
                     writer.write("");
                     writer.write(createTableSQL);
                     writer.flush();
@@ -58,7 +54,6 @@ public class FileFactory {
             }
 
         } else {
-            // 不存在 | 递归创建 dir
             boolean createSuccess = directory.mkdirs();
             boolean fileSuccess = true;
             if (!file.exists()) {
@@ -71,10 +66,7 @@ public class FileFactory {
 
             // 写入
             try {
-                // 第2个参数, true = 追加写入
                 writer = new FileWriter(outputFile, true);
-                //清空原文件内容
-//                writer.write("");
                 writer.write(createTableSQL);
                 writer.flush();
                 writer.close();

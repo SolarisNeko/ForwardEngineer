@@ -28,8 +28,6 @@ public class TableFactory {
         String engine;
         String charset;
 
-        // Reflect
-
         // get Annotation
         Table[] tableAnnotation = targetClass.getAnnotationsByType(Table.class);
         /** 没有 @Table = 使用默认值 */

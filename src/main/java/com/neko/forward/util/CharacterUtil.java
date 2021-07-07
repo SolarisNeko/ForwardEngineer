@@ -27,10 +27,10 @@ public class CharacterUtil {
                 // java.lang.Character 判断大小写
                 final boolean upperCase = Character.isUpperCase(aChar);
                 if (upperCase) {
-                    // 大写
+                    // is Upper Case
                     sb.append("_" + aChar);
                 } else {
-                    // 小写
+                    // is Lower Case
                     final char upperChar = Character.toUpperCase(aChar);
                     sb.append(upperChar);
                 }
@@ -56,7 +56,7 @@ public class CharacterUtil {
             // [1, n] 字母, 遇到大写, 进行大驼峰处理
             for (int i1 = 1; i1 < chars.length; i1++) {
                 char aChar = chars[i1];
-                // java.lang.Character 判断大小写
+                // 判断大小写
                 final boolean upperCase = Character.isUpperCase(aChar);
                 if (upperCase) {
                     // 大写 = 进行【大驼峰 _X 】, 再拼接
