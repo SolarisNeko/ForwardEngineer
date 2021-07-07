@@ -2,13 +2,11 @@
 
 > @author: SolarisNeko 
 >
-> @startDate: Saturday，03/07/2021
+> @startDate: Saturday，2021-07-03
 
 ## 快速上手
 
 下载 jar 包
-
-最新版:
 
 https://gitee.com/SolarisNeko/forward-engineering/attach_files/765343/download/ForwardEngineering-0.0.5.jar
 

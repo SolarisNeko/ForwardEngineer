@@ -68,8 +68,8 @@ public class ForwardEngineer {
             // 生成 .sql 文件 | 如果已存在, 则覆盖
             System.out.println("请稍等.. \n");
             // 使用 SSD I/O 1200MB/s 来作为速度上限
-            long needSeconds = sqlSB.toString().length() / 1024 / 1200 ;
-            System.out.println("大约需要 " + needSeconds + "s\n");
+            long needSeconds = sqlSB.toString().length() * 3;
+            System.out.println("预计帮你节省 " + needSeconds + "s\n");
 
             /** 生成文件 */
             FileFactory.generateSqlFile(sqlSB.toString());
