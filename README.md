@@ -8,7 +8,9 @@
 
 下载 jar 包
 
-https://gitee.com/SolarisNeko/forward-engineering/releases
+最新版:
+
+https://gitee.com/SolarisNeko/forward-engineering/attach_files/765343/download/ForwardEngineering-0.0.5.jar
 
 ```java
 // 查看帮助手册 
