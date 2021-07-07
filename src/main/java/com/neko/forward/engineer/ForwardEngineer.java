@@ -111,11 +111,10 @@ public class ForwardEngineer {
     public static void readMe() {
         System.out.println("------------ How to use ForwardEngineer -------------------");
         System.out.println();
-        System.out.println("入口类 = ForwardEngine ");
+        System.out.println("入口类 = ForwardEngineer.java ");
         System.out.println();
         System.out.println("单个 .java 文件 : ");
         System.out.println(" ForwardEngine.runClass(\"com.neko.entity.SystemUser\"); ");
-        System.out.println(" ps:上面的 com.neko.entity.SystemUser 是你的 Entity(实体) 位置");
         System.out.println();
         System.out.println("扫描 package :");
         System.out.println(" ForwardEngine.runPackage(\"com.neko.entity\"); ");
